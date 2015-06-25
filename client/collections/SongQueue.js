@@ -9,9 +9,16 @@ var SongQueue = Songs.extend({
         that.playFirst();
     });
 
-    // this.on('ended', function(){
-    //   this.at(0).ended();
-    // });
+    this.on('ended', function(song){
+      // How is it possible for song to be undefined?
+      this.remove(this.at(0));
+      if(that.length === 0) return;
+      this.playFirst();
+    });
+
+    this.on('dequeue', function(song){
+      this.remove(song);
+    });
   },
 
   // Does this work?

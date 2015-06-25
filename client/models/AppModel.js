@@ -22,16 +22,11 @@ var AppModel = Backbone.Model.extend({
       songQueue.add(song);
     }, this);
 
-    params.library.on('dequeue', function(song){
-      this.get('songQueue').remove(song);
-      // do a bunch of stuf for speical cases when dequeing.
-        // if the songqueue is 0 length then stop playing
-    }, this);
-
-    params.library.on('ended', function(song){
-      this.get('songQueue').remove(song);
-      this.get('songQueue').playFirst();
-    }, this);
+    // params.library.on('dequeue', function(song){
+    //   this.get('songQueue').remove(song);
+    //   // do a bunch of stuf for speical cases when dequeing.
+    //     // if the songqueue is 0 length then stop playing
+    // }, this);
   }
 
 });
