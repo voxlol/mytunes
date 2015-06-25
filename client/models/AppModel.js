@@ -18,13 +18,20 @@ var AppModel = Backbone.Model.extend({
     }, this);
 
     params.library.on('enqueue', function(song){
-      this.get('songQueue').add(song);
+      var songQueue = this.get('songQueue');
+      songQueue.add(song);
+    }, this);
+
+    params.library.on('dequeue', function(song){
+      this.get('songQueue').remove(song);
+      // do a bunch of stuf for speical cases when dequeining.
+        // if the songqueue is 0 length then stop playing
     }, this);
 
     params.library.on('ended', function(song){
-      // logic for manipulating the queue
-        // ENDED QUEUE
+      // What is listening to the collection changes?
       this.get('songQueue').shift();
+      this.get('songQueue').playFirst();
     }, this);
   }
 
