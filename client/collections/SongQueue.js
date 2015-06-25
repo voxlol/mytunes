@@ -10,9 +10,9 @@ var SongQueue = Songs.extend({
     });
 
     this.on('ended', function(song){
-      // How is it possible for song to be undefined?
       this.remove(this.at(0));
-      if(that.length === 0) return;
+
+      if(this.length === 0) return;
       this.playFirst();
     });
   },
