@@ -15,10 +15,6 @@ var SongQueue = Songs.extend({
       if(that.length === 0) return;
       this.playFirst();
     });
-
-    this.on('dequeue', function(song){
-      this.remove(song);
-    });
   },
 
   // Does this work?
