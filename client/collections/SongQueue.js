@@ -15,6 +15,15 @@ var SongQueue = Songs.extend({
       if(this.length === 0) return;
       this.playFirst();
     });
+
+    this.on('dequeue', function(song){
+      this.remove(song);
+      if(this.length > 0)
+        this.playFirst();
+      else{
+        song.trigger('empty', song);
+      }
+    });
   },
 
   // Does this work?
