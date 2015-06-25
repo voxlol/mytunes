@@ -8,6 +8,10 @@ var SongQueue = Songs.extend({
       if(that.length === 1)
         that.playFirst();
     });
+
+    // this.on('ended', function(){
+    //   this.at(0).ended();
+    // });
   },
 
   // Does this work?
